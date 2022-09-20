@@ -8,9 +8,10 @@ const login = (req, res, next) => {
     }
     const verified = jwt.verify(token, process.env.JWT_SECRET);
     if (verified){
+      
       return res
         .status(200)
-        .json({ auth:true, message: "Hey buddy, You are already logged in", redirection: "/dashboard" });
+        .json({ auth:true,user: req.session.user, message: "Hey buddy, You are already logged in", redirection: "/dashboard" });
     }
     else {
         next()

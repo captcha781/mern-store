@@ -20,6 +20,10 @@ const AdminSchema = mongoose.Schema({
     mail: {
         type: String,
         required: true
+    },
+    type: {
+        type:String,
+        required: true
     }
 })
 

@@ -15,6 +15,7 @@ const MongoDBStore = require("connect-mongodb-session")(session);
 
 // Route Specifications
 const adminRoutes = require("./Routes/Admin")
+const globalRoutes = require("./Routes/Global")
 
 // Intializations
 const app = express();
@@ -47,11 +48,13 @@ app.use(
     name: "biscuit",
   })
 );
+app.use("/", globalRoutes)
 app.use("/admin", adminRoutes)
 
-app.use((req,res) => {
-  console.log(req.headers);
-})
+// app.use((req,res) => {
+//   console.log(req.headers);
+// res.
+// })
 
 mongoose.connect(process.env.MONGODB_CONNECT_STRING, (err) => {
   if (err) {
